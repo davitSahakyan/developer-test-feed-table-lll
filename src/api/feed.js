@@ -1,6 +1,4 @@
-const API_URL = (typeof window !== 'undefined' && window.location.protocol === 'https:')
-  ? '/api/developer/QueryFeed' // via Netlify Function (HTTPS safe)
-  : 'http://130.61.77.93:50940/api/developer/QueryFeed'
+const API_URL = 'http://130.61.77.93:50940/api/developer/QueryFeed'
 const DEVELOPER_KEY = 'usearch-dev-2025'
 
 export const parseApiResponse = (json) => {
