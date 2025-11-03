@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/developer/QueryFeed"
+  to = "/.netlify/functions/feed-proxy"
+  status = 200
+  force = true
+
+

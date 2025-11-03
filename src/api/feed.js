@@ -1,4 +1,6 @@
-const API_URL = 'http://130.61.77.93:50940/api/developer/QueryFeed'
+const API_URL = (typeof window !== 'undefined' && window.location.protocol === 'https:')
+  ? '/api/developer/QueryFeed' // via Netlify Function (HTTPS safe)
+  : 'http://130.61.77.93:50940/api/developer/QueryFeed'
 const DEVELOPER_KEY = 'usearch-dev-2025'
 
 export const parseApiResponse = (json) => {
@@ -36,7 +38,7 @@ export const extractTotalPages = (json, totalRecords, pageSize) => {
 
 // React Query fetcher: receives pageNumber/pageSize and optional AbortSignal
 export async function queryFeed({ pageNumber, pageSize, signal }) {
-  const res = await fetch(API_URL , {
+  const res = await fetch(API_URL, {
     method: 'POST',
     headers: {
       'DeveloperKey': DEVELOPER_KEY,
