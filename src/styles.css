@@ -34,6 +34,43 @@ h1 {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 14px;
+  position: relative;
+}
+
+/* Error Notification */
+.errorNotification {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  color: #991b1b;
+  font-size: 14px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.errorIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.errorMessage {
+  flex: 1;
+  font-weight: 500;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Table Info Bar */

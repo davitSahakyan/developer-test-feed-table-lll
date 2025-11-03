@@ -159,8 +159,16 @@ export default function FeedTable() {
   })
 
   useEffect(() => {
-    setIsLoading(queryLoading)
-    setError(queryError ? queryError.message : '')
+    // Always set loading to false if there's an error
+    if (queryError) {
+      setIsLoading(false)
+      setError(queryError.message || 'An error occurred')
+      setHasLoadedOnce(true)
+    } else {
+      setIsLoading(queryLoading)
+      setError('')
+    }
+    
     if (queryData) {
       setData(queryData.rows)
       setTotalRecords(queryData.totalRecords)
@@ -224,6 +232,13 @@ export default function FeedTable() {
 
   return (
     <div className="card">
+      {error && (
+        <div className="errorNotification" role="alert">
+          <span className="errorIcon">⚠️</span>
+          <span className="errorMessage">{error}</span>
+        </div>
+      )}
+      
       <div className="tableInfo">
         <div className="infoItem">
           <span className="infoLabel">Rows:</span>
