@@ -1,12 +1,18 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  functions = "netlify/functions"
 
+# Proxy all /api/* requests to your HTTP backend
 [[redirects]]
-  from = "/api/developer/QueryFeed"
-  to = "/.netlify/functions/feed-proxy"
+  from = "/api/*"
+  to = "http://130.61.77.93:50940/api/:splat"
   status = 200
   force = true
 
-
+# (Optional) Add CORS headers on the response
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
