@@ -156,6 +156,7 @@ export default function FeedTable() {
     },
     keepPreviousData: true,
     staleTime: 5_000,
+    retry: false,
   })
 
   useEffect(() => {
