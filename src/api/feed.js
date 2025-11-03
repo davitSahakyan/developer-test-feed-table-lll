@@ -36,7 +36,7 @@ export const extractTotalPages = (json, totalRecords, pageSize) => {
 
 // React Query fetcher: receives pageNumber/pageSize and optional AbortSignal
 export async function queryFeed({ pageNumber, pageSize, signal }) {
-  const res = await fetch(API_URL, {
+  const res = await fetch("http://130.61.77.93:50940/api/developer/QueryFeed", {
     method: 'POST',
     headers: {
       'DeveloperKey': DEVELOPER_KEY,
