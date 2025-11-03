@@ -1,4 +1,4 @@
-const API_URL = 'http://130.61.77.93:50940/api/developer/QueryFeed'
+const API_URL = '/api/developer/QueryFeed' // proxied via vite.config.js
 const DEVELOPER_KEY = 'usearch-dev-2025'
 
 export const parseApiResponse = (json) => {
